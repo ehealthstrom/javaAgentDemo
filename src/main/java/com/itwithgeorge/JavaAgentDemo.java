@@ -1,5 +1,6 @@
 package main.java.com.itwithgeorge;
 
+import com.itwithgeorge.CustomClassTransformer;
 import java.lang.instrument.Instrumentation;
 
 // 1. create Java project
@@ -13,6 +14,7 @@ public class JavaAgentDemo {
 
     public static void premain(String agentArgs, Instrumentation inst) {
         System.out.println("JavaAgentDemo premain from thread: " + Thread.currentThread().getName());
+        inst.addTransformer(new CustomClassTransformer());
     }
 
     public static void agentmain(String agentArgs, Instrumentation inst) {
